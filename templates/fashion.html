@@ -1,0 +1,309 @@
+<!-- Save this as fashion.html in your templates folder -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fashion Photography</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: url('/static/images/fashion-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #1a1a1a;
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar a {
+      color: #1a1a1a;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      font-size: 1.05em;
+    }
+
+    .navbar a:hover {
+      color: #ff69b4;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8em;
+      font-weight: 700;
+      margin: 50px 0 30px;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .fashion-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding: 0 20px 60px;
+    }
+
+    .fashion-card {
+      display: flex;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      width: 90%;
+      max-width: 800px;
+      min-height: 250px;
+      transition: transform 0.3s ease;
+    }
+
+    .fashion-card:hover {
+      transform: scale(1.02);
+    }
+
+    .image-container {
+      width: 250px;
+      height: 250px;
+      flex-shrink: 0;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .fashion-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .fashion-details h3 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .fashion-details p {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .book-btn {
+      background-color: #000;
+      color: white;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .book-btn:hover {
+      background-color: #ff69b4;
+      color: black;
+    }
+
+    .how-it-works {
+      background: #fdf5f7;
+      padding: 50px 20px;
+    }
+
+    .how-it-works h2 {
+      text-align: center;
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    details {
+      background: #fff;
+      border-radius: 10px;
+      margin: 10px auto;
+      max-width: 800px;
+      padding: 15px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-size: 1.1em;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+    }
+
+    summary::marker {
+      color: #ff69b4;
+    }
+
+    details[open] summary {
+      color: #ff69b4;
+    }
+
+    footer {
+      background-color: rgba(255,255,255,0.95);
+      padding: 40px 20px;
+      text-align: center;
+      color: #333;
+      margin-top: 60px;
+      border-top: 2px solid #eee;
+    }
+
+    footer h3 {
+      color: #ff69b4;
+      margin-bottom: 15px;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #ff69b4;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      color: #ff1493;
+    }
+
+    @media (max-width: 600px) {
+      .fashion-card {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-container {
+        width: 100%;
+        height: 250px;
+      }
+
+      .fashion-details {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div><strong>Capture Moments</strong></div>
+    <div>
+      <a href="/">Home</a>
+      <a href="/book">Book</a>
+      <a href="/login">Login</a>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="section-title">Fashion Photography</div>
+
+  <!-- Fashion Cards -->
+  <div class="fashion-list">
+
+    <div class="fashion-card">
+      <div class="image-container">
+        <img src="/static/images/modern.jpg" alt="Modern Chic">
+      </div>
+      <div class="fashion-details">
+        <h3>Modern Chic</h3>
+        <p>Booking Cost: ₹8,000</p>
+        <a href="{{ url_for('book_photographer', design='modern') }}" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="fashion-card">
+      <div class="image-container">
+        <img src="/static/images/vintage.jpg" alt="Vintage Elegance">
+      </div>
+      <div class="fashion-details">
+        <h3>Vintage Elegance</h3>
+        <p>Booking Cost: ₹7,500</p>
+        <a href="{{ url_for('book_photographer', design='vintage') }}" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="fashion-card">
+      <div class="image-container">
+        <img src="/static/images/runway.jpg" alt="Runway Trend">
+      </div>
+      <div class="fashion-details">
+        <h3>Runway Trend</h3>
+        <p>Booking Cost: ₹12,000</p>
+        <a href="{{ url_for('book_photographer', design='runway') }}" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="fashion-card">
+      <div class="image-container">
+        <img src="/static/images/editorial.jpg" alt="Editorial Lookbook">
+      </div>
+      <div class="fashion-details">
+        <h3>Editorial Lookbook</h3>
+        <p>Booking Cost: ₹9,500</p>
+        <a href="{{ url_for('book_photographer', design='editorial') }}" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2>How it Works ?</h2>
+
+    <details open>
+      <summary>1. Choose Your Style 👗</summary>
+      <p>Select the style that reflects your fashion sense — from runway to retro.</p>
+    </details>
+
+    <details>
+      <summary>2. View Pricing 💼</summary>
+      <p>Transparent pricing displayed with each fashion category. No surprises.</p>
+    </details>
+
+    <details>
+      <summary>3. Photographer Assigned 📸</summary>
+      <p>A pro fashion photographer will be assigned based on your selection.</p>
+    </details>
+
+    <details>
+      <summary>4. Pay After Delivery ✅</summary>
+      <p>Only pay after your lookbook or portfolio is completed and delivered.</p>
+    </details>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h3>Contact Us</h3>
+    <p>Email: contact@capturemoments.com | Phone: +91 98765 43210</p>
+    <p>Address: 21 Style Street, Glam City, India</p>
+    <div style="margin-top: 10px;">
+      <a href="#">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.9em;">© 2025 Capture Moments. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

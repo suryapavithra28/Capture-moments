@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Photographers</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('/static/images/bg_photographers.jpg') no-repeat center center fixed;
+      background-size: cover;
+      padding: 30px 20px;
+      margin: 0;
+      color: #fff;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 15px;
+      right: 25px;
+      z-index: 1000;
+    }
+
+    .top-bar a {
+      background-color: yellow;
+      color: black;
+      padding: 10px 18px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
+      font-size: 36px;
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .photographer-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 320px;
+      padding: 15px;
+      text-align: center;
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInScale 0.6s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photographer-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #ffd700;
+    }
+
+    .photographer-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .photographer-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .photo-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(135deg, #ffdb58, #ffa500);
+      color: black;
+      padding: 6px 12px;
+      font-weight: bold;
+      font-size: 12px;
+      border-radius: 8px;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .skills, .experience, .rating {
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    .rating span {
+      color: gold;
+    }
+
+    .show-btn {
+      margin-top: 10px;
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .show-btn:hover {
+      background-color: #ffa07a;
+      color: black;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      overflow: auto;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 800px;
+      color: #000;
+    }
+
+    .close-btn {
+      background-color: #8B0000;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+      margin-top: -10px;
+    }
+
+    .modal-content h2 {
+      color: #8B0000;
+    }
+
+    .reviews, .add-review {
+      margin-top: 20px;
+    }
+
+    .comment-box {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    .review {
+      background: #f0f0f0;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+    }
+
+    .thumbs {
+      font-size: 20px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 18px;
+    }
+
+    .submit-btn {
+      background-color: #333;
+      color: white;
+      padding: 8px 16px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: yellow;
+      color: black;
+    }
+
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .features-section {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 40px 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    .features-section h2 {
+      font-size: 2.2em;
+      text-align: center;
+      color: yellow;
+      margin-bottom: 10px;
+    }
+
+    .features-section p.subtitle {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #eee;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      text-align: center;
+      color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.05);
+    }
+
+    .feature-card h3 {
+      color: yellow;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.95em;
+      color: #eee;
+    }
+
+    @media screen and (min-width: 768px) {
+      .photographer-card {
+        width: 45%;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .photographer-card {
+        width: 48%;
+        padding: 12px;
+      }
+
+      .photographer-card img {
+        height: 150px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .features-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .top-bar {
+        top: 10px;
+        right: 15px;
+      }
+
+      .top-bar a {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .photographer-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="/">Go to Home</a>
+</div>
+
+<h1>The Faces Behind the Lens</h1>
+
+<div class="row">
+  {% set fake_ratings = ['★★★★☆', '★★★★★', '★★★☆☆', '★★★★☆', '★★★☆☆', '★★★★☆', '★★★★★', '★★★☆☆'] %}
+  {% set fake_experience = ['3 yrs', '5 yrs', '2 yrs', '4 yrs', '6 yrs', '3 yrs', '5 yrs', '2 yrs'] %}
+  {% set photo_tags = ['Top Rated', 'Trending', 'New', 'Most Booked', 'Popular', 'Trusted', 'Top Rated', 'Creative'] %}
+
+  {% for p in photographers %}
+  <div class="photographer-card">
+    <div class="photo-badge">{{ photo_tags[loop.index0] }}</div>
+    <img id="photographer-img-{{ p.id }}" src="{{ url_for('static', filename='images/' + p.image) }}" alt="{{ p.name }}">
+    <div class="name">{{ p.name }}</div>
+    <div class="skills"><strong>Skills:</strong> {{ p.skills | join(', ') }}</div>
+    <div class="experience"><strong>Experience:</strong> {{ fake_experience[loop.index0] }}</div>
+    <div class="rating"><strong>Rating:</strong> <span>{{ fake_ratings[loop.index0] }}</span></div>
+    <button class="show-btn" onclick="openModal('{{ p.name }}')">Show</button>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Modal -->
+<div id="showModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">Close ✖</button>
+    <h2 id="modalPhotographerName">Photographer Reviews</h2>
+
+    <div class="reviews" id="reviewList">
+      <div class="review">"Amazing experience and very professional!" ⭐⭐⭐⭐⭐</div>
+      <div class="review">"Captured our wedding perfectly!" 👍</div>
+      <div class="review">"Could improve on delivery time, but quality was excellent." ⭐⭐⭐⭐</div>
+    </div>
+
+    <div class="add-review">
+      <p><strong>Rate this photographer:</strong></p>
+      <span class="stars">⭐ ⭐ ⭐ ⭐ ⭐</span>
+      <p><strong>Poll:</strong>
+        <span class="thumbs">👍</span>
+        <span class="thumbs">👎</span>
+      </p>
+      <textarea id="userComment" class="comment-box" placeholder="Write your comment..."></textarea>
+      <button class="submit-btn" onclick="submitComment()">Submit Comment</button>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<section class="features-section">
+  <h2>OUR FEATURES</h2>
+  <p class="subtitle">We provide several services to make your special moment more special</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>PROFESSIONAL</h3>
+      <p>We ensure the best professional experience. Our photographers are trained and well-experienced.</p>
+    </div>
+    <div class="feature-card">
+      <h3>RECOMMENDED BY PEOPLE</h3>
+      <p>Clients love our work and often recommend us to others. Your trust is our reputation.</p>
+    </div>
+    <div class="feature-card">
+      <h3>HIGH-END GEAR</h3>
+      <p>We use high-quality DSLR cameras, lenses, and lighting equipment to capture perfection.</p>
+    </div>
+    <div class="feature-card">
+      <h3>CREATIVE ANGLES</h3>
+      <p>Our photographers excel at capturing unique compositions and story-driven frames.</p>
+    </div>
+    <div class="feature-card">
+      <h3>SKILLED TEAM</h3>
+      <p>From candid shots to traditional photography, our team adapts to your preferences.</p>
+    </div>
+    <div class="feature-card">
+      <h3>QUALITY DELIVERY</h3>
+      <p>We deliver fully edited photos and albums with the best finish and timely turnaround.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  function openModal(name) {
+    document.getElementById("modalPhotographerName").textContent = name + "'s Reviews";
+    document.getElementById("showModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("showModal").style.display = "none";
+  }
+
+  function submitComment() {
+    const text = document.getElementById("userComment").value.trim();
+    if (text) {
+      const reviewList = document.getElementById("reviewList");
+      const newReview = document.createElement("div");
+      newReview.className = "review";
+      newReview.textContent = text;
+      reviewList.appendChild(newReview);
+      document.getElementById("userComment").value = "";
+    }
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("showModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+
+</body>
+</html>

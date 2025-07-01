@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nature Photography Designs</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: url('/static/images/nature-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #1a1a1a;
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar a {
+      color: #006400;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      font-size: 1.05em;
+    }
+
+    .navbar a:hover {
+      color: #32cd32;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: 700;
+      margin: 40px 0 30px;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .wedding-gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding: 0 20px 60px;
+    }
+
+    .wedding-card {
+      display: flex;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      width: 90%;
+      max-width: 800px;
+      min-height: 250px;
+      transition: transform 0.3s ease;
+    }
+
+    .wedding-card:hover {
+      transform: scale(1.02);
+    }
+
+    .image-container {
+      width: 250px;
+      height: 250px;
+      flex-shrink: 0;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .wedding-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .wedding-details h3 {
+      font-size: 1.6em;
+      margin-bottom: 10px;
+      color: #006400;
+    }
+
+    .wedding-details p {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .book-btn {
+      background-color: #006400;
+      color: white;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .book-btn:hover {
+      background-color: #32cd32;
+      color: black;
+    }
+
+    .how-it-works {
+      background: #f0fff0;
+      padding: 50px 20px;
+    }
+
+    .how-it-works h2 {
+      text-align: center;
+      color: #006400;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    details {
+      background: #fff;
+      border-radius: 10px;
+      margin: 10px auto;
+      max-width: 800px;
+      padding: 15px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-size: 1.1em;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+    }
+
+    summary::marker {
+      color: #006400;
+    }
+
+    details[open] summary {
+      color: #006400;
+    }
+
+    footer {
+      background-color: rgba(255,255,255,0.9);
+      padding: 40px 20px;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      color: #333;
+      margin-top: 60px;
+      border-top: 2px solid #eee;
+    }
+
+    footer h3 {
+      color: #006400;
+      margin-bottom: 15px;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #006400;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      color: #32cd32;
+    }
+
+    @media (max-width: 600px) {
+      .wedding-card {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-container {
+        width: 100%;
+        height: 250px;
+      }
+
+      .wedding-details {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div><strong>Capture Moments</strong></div>
+    <div>
+      <a href="/">Home</a>
+      <a href="/book">Book</a>
+      <a href="/login">Login</a>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="section-title">Explore Nature Photography Styles</div>
+
+  <!-- Nature Styles -->
+  <div class="wedding-gallery">
+
+    <div class="wedding-card">
+      <div class="image-container">
+        <img src="/static/images/nature-forest.jpg" alt="Forest Photography">
+      </div>
+      <div class="wedding-details">
+        <h3>Forest Serenity</h3>
+        <p>Booking Cost: ₹8,500</p>
+        <a href="/book?type=nature&style=Forest%20Serenity" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="wedding-card">
+      <div class="image-container">
+        <img src="/static/images/nature-mountains.jpg" alt="Mountain Photography">
+      </div>
+      <div class="wedding-details">
+        <h3>Mountain Majesty</h3>
+        <p>Booking Cost: ₹10,000</p>
+        <a href="/book?type=nature&style=Mountain%20Majesty" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="wedding-card">
+      <div class="image-container">
+        <img src="/static/images/nature-beach.jpg" alt="Beach Photography">
+      </div>
+      <div class="wedding-details">
+        <h3>Beach Breeze</h3>
+        <p>Booking Cost: ₹9,200</p>
+        <a href="/book?type=nature&style=Beach%20Breeze" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- How it Works -->
+  <section class="how-it-works">
+    <h2>How it Works ?</h2>
+
+    <details open>
+      <summary>1. Just Book 📅</summary>
+      <p>Select your nature backdrop and confirm your session effortlessly.</p>
+    </details>
+
+    <details>
+      <summary>2. Transparent Pricing 💰</summary>
+      <p>Clear and fair pricing, so you always know what you're paying for.</p>
+    </details>
+
+    <details>
+      <summary>3. Experienced Nature Photographers 📸</summary>
+      <p>Our professionals are trained to capture the perfect natural light and landscape.</p>
+    </details>
+
+    <details>
+      <summary>4. Pay After You're Happy ✅</summary>
+      <p>Pay only after you're thrilled with your final images.</p>
+    </details>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h3>Contact Us</h3>
+    <p>Email: contact@capturemoments.com | Phone: +91 98765 43210</p>
+    <p>Address: 21 Memories Lane, Shutter Town, India</p>
+    <div style="margin-top: 10px;">
+      <a href="#">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.9em;">© 2025 Capture Moments. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

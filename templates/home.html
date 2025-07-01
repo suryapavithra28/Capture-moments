@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Capture Moments</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('/static/images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white; text-align: center;
+      min-height: 100vh; position: relative;
+    }
+    .overlay {
+      background-color: rgba(0,0,0,0.6);
+      position: absolute; top:0; left:0; width:100%; height:100%; z-index:0;
+    }
+    .hero-animation {
+      position: absolute; top:50%; left:50%;
+      transform: translate(-50%,-50%);
+      font-size: 5em; font-weight:bold; z-index:2;
+      animation: scaleDown 2s ease forwards;
+    }
+    @keyframes scaleDown {
+      0% { font-size:5em; top:50%; left:50%; transform:translate(-50%,-50%); }
+      100% { font-size:2.5em; top:80px; left:50%; transform:translateX(-50%); }
+    }
+    .navbar {
+      position:fixed; top:0; right:0;
+      padding:10px 20px; display:flex; gap:10px;
+      z-index:3; background:rgba(0,0,0,0.4);
+      border-bottom-left-radius:10px; flex-wrap:wrap;
+    }
+    .navbar a {
+      color:white; text-decoration:none;
+      padding:8px 16px; border:2px solid white;
+      border-radius:6px; font-weight:bold;
+      font-size:0.9em; transition:all 0.3s;
+    }
+    .navbar a:hover {
+      background:yellow; color:black; border-color:yellow;
+    }
+    .main-content { opacity:0; animation:fadeIn 1s ease 2s forwards; }
+    @keyframes fadeIn { to { opacity:1; } }
+    .content { position:relative; z-index:1; padding:160px 0 40px; }
+    p { font-size:1.2em; margin-bottom:30px; padding:0 10px; }
+    a.button {
+      background:white; color:black; padding:12px 24px;
+      margin:10px; text-decoration:none;
+      border-radius:8px; font-weight:bold;
+      transition:all 0.3s; display:inline-block;
+    }
+    a.button:hover { background:yellow; color:black; }
+
+    .category-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 30px 40px;
+      margin-top: 30px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .category-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      background: white; color: black;
+      transition: transform 0.3s ease;
+    }
+    .category-card:hover { transform: scale(1.05); }
+    .category-card img {
+      width: 100%; height: 160px; object-fit: cover;
+    }
+    .category-card h3 {
+      margin: 15px 0 10px; font-size: 1.2em;
+    }
+    .category-card p {
+      font-size: 0.95em; margin: 0 15px 15px; color: #333;
+    }
+    .category-card .button {
+      background: black; color: white;
+      padding: 8px 16px; margin-bottom: 15px;
+      border-radius: 6px; font-size: 0.9em;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+    .category-card .button:hover {
+      background-color: yellow;
+      color: black;
+    }
+
+    @media (max-width:768px) {
+      .hero-animation { font-size:3em; }
+      .category-gallery { padding: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+      .category-card img { height: 140px; }
+    }
+
+    footer {
+      background:rgba(0,0,0,0.8); color:white;
+      padding:40px 20px; margin-top:60px;
+      text-align:center; position:relative; z-index:2;
+    }
+    footer h2 { margin-bottom:10px; color:yellow; }
+    footer p, footer a { font-size:0.95em; color:#ccc; }
+    footer a { margin:0 10px; text-decoration:none; }
+    footer a:hover { color:yellow; }
+    footer hr {
+      width:50%; margin:20px auto;
+      border-color:rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="hero-animation">Capture Moments</div>
+
+  <div class="navbar">
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+  </div>
+
+  <div class="main-content">
+    <div class="content">
+      <p>Your go‑to platform for booking photographers!</p>
+      <a href="/book" class="button">Book a Photographer</a>
+      <a href="/show-photographers" class="button">View Photographers</a>
+
+      <div class="category-gallery">
+        <div class="category-card">
+          <img src="/static/images/wedding.jpg" alt="Wedding">
+          <h3>Wedding</h3>
+          <p>Relive your magical day with our expert wedding photographers.</p>
+          <a href="/wedding" class="button">Explore</a>
+        </div>
+        <div class="category-card">
+          <img src="/static/images/little ones.jpg" alt="Little Ones">
+          <h3>Little Ones</h3>
+          <p>Preserve the precious early years of your child with adorable photography.</p>
+          <a href="/little ones" class="button">Explore</a>
+        </div>
+        <div class="category-card">
+          <img src="/static/images/fashion.jpg" alt="Fashion">
+          <h3>Fashion</h3>
+          <p>Express your personality with vibrant and stylish fashion shoots.</p>
+          <a href="/fashion" class="button">Explore</a>
+        </div>
+        <div class="category-card">
+          <img src="/static/images/event.jpg" alt="Event">
+          <h3>Event</h3>
+          <p>From concerts to corporate parties, we capture every moment.</p>
+          <a href="/event" class="button">Explore</a>
+        </div>
+        <div class="category-card">
+          <img src="/static/images/nature.jpg" alt="Nature">
+          <h3>Nature</h3>
+          <p>Capture breathtaking outdoor scenes with expert nature shoots.</p>
+          <a href="/nature" class="button">Explore</a>
+        </div>
+        <div class="category-card">
+          <img src="/static/images/maternity.jpg" alt="Maternity">
+          <h3>Maternity</h3>
+          <p>Celebrate new life with tasteful, heartfelt maternity photography.</p>
+          <a href="/maternity" class="button">Explore</a>
+        </div>
+        <div class="category-card">
+          <img src="/static/images/prewedding.jpg" alt="Pre-Wedding">
+          <h3>Pre‑Wedding</h3>
+          <p>Cherish your love story in intimate pre‑wedding sessions.</p>
+          <a href="/prewedding" class="button">Explore</a>
+        </div>
+
+        <div class="category-card">
+          <img src="/static/images/wildlife.jpg" alt="Wildlife">
+          <h3>Wildlife</h3>
+          <p>Capture the raw beauty of animals in their natural habitats with our wildlife experts.</p>
+          <a href="/wildlife" class="button">Explore</a>
+        </div>
+
+<div class="category-card">
+  <img src="/static/images/street.jpg" alt="Street">
+  <h3>Street</h3>
+  <p>Discover the soul of urban life through spontaneous and candid street photography.</p>
+  <a href="/street" class="button">Explore</a>
+</div>
+
+<div class="category-card">
+  <img src="/static/images/portrait.jpg" alt="Portrait">
+  <h3>Portrait</h3>
+  <p>Timeless portraits that express personality and emotion with every click.</p>
+  <a href="/portrait" class="button">Explore</a>
+</div>
+
+<div class="category-card">
+  <img src="/static/images/documentary.jpg" alt="Documentary">
+  <h3>Documentary</h3>
+  <p>Telling real stories with impactful images that reflect life and moments.</p>
+  <a href="/documentary" class="button">Explore</a>
+</div>
+
+  <div class="category-card">
+  <img src="/static/images/food.jpg" alt="Food">
+  <h3>Food</h3>
+  <p>Mouth-watering shots that make your dishes look as good as they taste.</p>
+  <a href="/food" class="button">Explore</a>
+</div>
+
+<div class="category-card">
+  <img src="/static/images/architecture.jpg" alt="Architecture">
+  <h3>Architecture</h3>
+  <p>Celebrate design and structure with stunning architectural photography.</p>
+  <a href="/architecture" class="button">Explore</a>
+</div>
+
+<div class="category-card">
+  <img src="/static/images/landscape.jpg" alt="Landscape">
+  <h3>Landscape</h3>
+  <p>Breathtaking views of nature, captured in their grandest forms.</p>
+  <a href="/landscape" class="button">Explore</a>
+</div>
+
+
+<div class="category-card">
+  <img src="/static/images/aerial.jpg" alt="Aerial">
+  <h3>Aerial</h3>
+  <p>See the world from above with stunning drone and aerial photography.</p>
+  <a href="/aerial" class="button">Explore</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h2>About Capture Moments</h2>
+    <p>Capture Moments is your trusted platform for finding professional photographers for weddings, events, baby milestones, and fashion shoots. We turn every special moment into timeless memories.</p>
+    <hr />
+    <p><strong>Email:</strong> contact@capturemoments.com</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+    <p><strong>Address:</strong> 21 Memories Lane, Shutter Town, India</p>
+    <div style="margin-top:20px;">
+      <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a>
+    </div>
+    <p style="margin-top:30px; font-size:0.9em; color:#aaa;">© 2025 Capture Moments. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

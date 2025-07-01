@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Photographer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: url('/static/images/book_background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Open Sans', sans-serif;
+      padding-top: 50px;
+      text-align: center;
+      color: white;
+      min-height: 100vh;
+    }
+
+    h2 {
+      color: yellow;
+      text-shadow: 1px 1px 2px black;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+    }
+
+    .form-wrapper {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+      color: black;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    input, select, textarea, button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 90%;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+    }
+
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #2980b9;
+      box-shadow: 0 0 10px #3498db;
+      color: #fff;
+    }
+
+    label {
+      display: block;
+      margin: 0 0 5px 5%;
+      text-align: left;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .form-group {
+      width: 100%;
+      padding-bottom: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .form-wrapper {
+        padding: 25px;
+      }
+
+      input, select, button, textarea {
+        width: 100%;
+      }
+
+      h2 {
+        font-size: 1.6em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Book a Photographer</h2>
+
+  <form method="POST" class="form-wrapper" onsubmit="return showAlert();">
+    
+    <div class="form-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Your full name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g., +91 9876543210" required pattern="[0-9+ ]{10,}">
+    </div>
+
+    <div class="form-group">
+      <label for="city">City / Location</label>
+      <input type="text" id="city" name="city" placeholder="City or Shoot Location" required>
+    </div>
+
+    <div class="form-group">
+      <label for="photographer_id">Photographer ID</label>
+      <select name="photographer_id" id="photographer_id" required>
+        <option value="" disabled selected>Select Photographer ID</option>
+        <option value="P101"> Attitude_Amit</option>
+        <option value="P102"> Stunning_sana</option>
+        <option value="P103"> Smilly_smitha</option>
+        <option value="P104"> Super_sravs</option>
+        <option value="P105"> Vintage_vikas</option>
+        <option value="P106"> pretty_pavi</option>
+        <option value="P107"> All rounder_Ayan</option>
+        <option value="P108"> Marvellous_Markus</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="user_id">Your User ID</label>
+      <input type="text" id="user_id" name="user_id" placeholder="e.g., U456" required>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Booking Date</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+    <div class="form-group">
+      <label for="time_slot">Preferred Time Slot</label>
+      <select name="time_slot" id="time_slot" required>
+        <option value="" disabled selected>Select Time</option>
+        <option value="Morning">Morning (8am–11am)</option>
+        <option value="Afternoon">Afternoon (12pm–3pm)</option>
+        <option value="Evening">Evening (4pm–7pm)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="event">Event Type</label>
+      <select name="event" id="event" required>
+        <option value="" disabled selected>Select Event Type</option>
+        <option value="Wedding">Wedding</option>
+        <option value="Pre-Wedding">Pre-Wedding</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Nature">Nature</option>
+        <option value="Architecture">Architecture</option>
+        <option value="Aerial">Aerial</option>
+        <option value="Maternity">Maternity</option>
+        <option value="Events">Events</option>
+        <option value="Landscape">Landscape</option>
+        <option value="Little Ones">Little Ones</option>
+        <option value="Wildlife">Wildlife</option>
+        <option value="Street">Street</option>
+        <option value="Portrait">Portrait</option>
+        <option value="Documentary">Documentary</option>
+        <option value="Food">Food</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="package">Photographer Package</label>
+      <select name="package" id="package" required>
+        <option value="" disabled selected>Select Package</option>
+        <option value="Standard">Standard (₹5,000)</option>
+        <option value="Premium">Premium (₹8,000)</option>
+        <option value="Luxury">Luxury (₹12,000)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="payment_method">Payment Method</label>
+      <select name="payment_method" id="payment_method" required>
+        <option value="" disabled selected>Select Payment Method</option>
+        <option value="UPI">UPI</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="Pay After Delivery">Pay After Delivery</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Any Notes / Requests</label>
+      <textarea id="notes" name="notes" placeholder="Mention time, location, preferences..."></textarea>
+    </div>
+
+    <button type="submit">Book Now</button>
+  </form>
+
+  <script>
+    function showAlert() {
+      alert("📸 Thank you! Your photographer booking has been submitted.");
+      return true;
+    }
+
+    // Prevent past dates
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById("date");
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.setAttribute("min", today);
+    });
+  </script>
+
+</body>
+</html>
